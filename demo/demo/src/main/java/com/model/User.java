@@ -2,10 +2,20 @@ package com.model;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.lang.NonNull;
 
-
+@Entity
+@Table(name = "users")
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NonNull
 	private String firstName;
@@ -20,8 +30,6 @@ public class User {
 	@NonNull
 	private Integer age;
 	@NonNull
-	private Integer numFriends;
-	@NonNull
 	private String gender;
 	
 	
@@ -29,8 +37,7 @@ public class User {
 		super();
 	}
 
-	public User(Long id,String firstName, String lastName, String country, String userName, String profileName, Integer age,
-			Integer numFriends, String gender) {
+	public User(String firstName, String lastName, String country, String userName, String profileName, Integer age, String gender) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -38,9 +45,8 @@ public class User {
 		this.userName = userName;
 		this.profileName = profileName;
 		this.age = age;
-		this.numFriends = numFriends;
 		this.gender = gender;
-		this.id = id;
+	
 		
 	}
 
@@ -92,14 +98,6 @@ public class User {
 		this.age = age;
 	}
 
-	public Integer getNumFriends() {
-		return numFriends;
-	}
-
-	public void setNumFriends(Integer numFriends) {
-		this.numFriends = numFriends;
-	}
-
 	public String getGender() {
 		return gender;
 	}
@@ -110,7 +108,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, country, firstName, gender, id, lastName, numFriends, profileName, userName);
+		return Objects.hash(age, country, firstName, gender, id, lastName, profileName, userName);
 	}
 
 	@Override
@@ -125,25 +123,17 @@ public class User {
 		return Objects.equals(age, other.age) && Objects.equals(country, other.country)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
 				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(numFriends, other.numFriends) && Objects.equals(profileName, other.profileName)
-				&& Objects.equals(userName, other.userName);
+				&& Objects.equals(profileName, other.profileName) && Objects.equals(userName, other.userName);
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", profileName=" + profileName + ", country=" + country + ", age=" + age + ", numFriends="
-				+ numFriends + ", gender=" + gender + "]";
+				+ ", profileName=" + profileName + ", country=" + country + ", age=" + age + ", gender=" + gender + "]";
 	}
 
 	public Long getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	
 	
 }

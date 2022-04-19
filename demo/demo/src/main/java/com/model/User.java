@@ -23,6 +23,8 @@ public class User {
 	private String lastName;
 	@NonNull
 	private String userName;
+	@NonNull 
+	private String passWord;
 	@NonNull
 	private String profileName;
 	@NonNull
@@ -37,17 +39,26 @@ public class User {
 		super();
 	}
 
-	public User(String firstName, String lastName, String country, String userName, String profileName, Integer age, String gender) {
+	public User(String firstName, String lastName, String country, String userName, String passWord, String profileName, Integer age, String gender) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.country = country;
 		this.userName = userName;
+		this.passWord = passWord;
 		this.profileName = profileName;
 		this.age = age;
 		this.gender = gender;
 	
 		
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
 	public String getFirstName() {
@@ -108,7 +119,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, country, firstName, gender, id, lastName, profileName, userName);
+		return Objects.hash(age, country, firstName, gender, id, lastName, passWord, profileName, userName);
 	}
 
 	@Override
@@ -123,13 +134,15 @@ public class User {
 		return Objects.equals(age, other.age) && Objects.equals(country, other.country)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
 				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(profileName, other.profileName) && Objects.equals(userName, other.userName);
+				&& Objects.equals(passWord, other.passWord) && Objects.equals(profileName, other.profileName)
+				&& Objects.equals(userName, other.userName);
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", profileName=" + profileName + ", country=" + country + ", age=" + age + ", gender=" + gender + "]";
+				+ ", passWord=" + passWord + ", profileName=" + profileName + ", country=" + country + ", age=" + age
+				+ ", gender=" + gender + "]";
 	}
 
 	public Long getId() {
